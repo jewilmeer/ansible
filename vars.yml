@@ -1,0 +1,20 @@
+---
+user: jewilmeer
+project_name: netflikker
+project_root: /var/www/netflikker
+project_repo: git@github.com:jewilmeer/tv-guide.git
+system_packages:
+  - build-essential
+  - software-properties-common
+  - libcurl4-openssl-dev
+  - zlib1g-dev
+  - iptables
+  - ntp
+  - vim
+  - git
+  - screen
+  - htop
+ruby_packages:
+  - ruby2.1
+  - ruby2.1-dev
+  - ruby-switch

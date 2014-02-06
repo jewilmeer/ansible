@@ -1,0 +1,6 @@
+- name: create {{user}} as user
+  action: user name={{user}} createhome=yes shell=/bin/bash state=present groups=sudo generate_ssh_key=true
+- name: make {{user}} a sandwich
+  action: template src=files/sudoers.d dest=/etc/sudoers.d/{{user}} mode=0440
+- name: set authorized_keys for {{user}}
+  copy: src=./authorized_keys dest=/home/{{user}}/.ssh/authorized_keys mode=0600 owner={{user}} group={{user}}

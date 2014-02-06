@@ -1,0 +1,9 @@
+- name: Add brightbox ruby-experimental repository
+  command: apt-add-repository ppa:brightbox/ruby-ng-experimental -y
+
+- name: Install required ruby packages.
+  apt: pkg={{item}} state=installed update-cache=yes
+  with_items: ruby_packages
+
+- name: Set default ruby version
+  shell: ruby-switch --set ruby2.1
