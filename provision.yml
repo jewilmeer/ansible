@@ -10,6 +10,7 @@
     - include: tasks/users.yml
     - include: tasks/packages.yml
     - include: tasks/ruby.yml
+    - include: tasks/postgresql.yml
 
 #   - name: Create the project directory.
 #     file: state=directory path=${project_root}

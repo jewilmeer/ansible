@@ -1,0 +1,5 @@
+- name: install required postgresql packages
+  apt: pkg={{item}} state=installed update-cache=yes
+  with_items:
+    - postgresql-9.1
+    - postgresql-server-dev-9.1
