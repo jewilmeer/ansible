@@ -1,5 +1,6 @@
 ---
 user: jewilmeer
+home: /home/{{user}}
 project_name: netflikker
 project_root: /var/www/netflikker
 project_repo: git@github.com:jewilmeer/tv-guide.git
