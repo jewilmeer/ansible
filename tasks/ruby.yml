@@ -7,3 +7,11 @@
 
 - name: Set default ruby version
   shell: ruby-switch --set ruby2.1
+
+- name: gem, could you stop making docs
+  shell: 'echo "gem: --no-rdoc --no-ri" >> {{home}}/.gemrc'
+
+- name: install basic gems
+  gem: name={{item}} state=present
+  with_items:
+  - bundler
