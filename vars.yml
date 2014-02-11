@@ -15,7 +15,11 @@ system_packages:
   - git
   - screen
   - htop
+  - python-dev
+  - python-setuptools
 ruby_packages:
   - ruby2.1
   - ruby2.1-dev
   - ruby-switch
+postgresql_shared_buffers: 225MB
+postgresql_listen_addresses: '*'

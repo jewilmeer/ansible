@@ -1,17 +1,2 @@
-[remote:children]
-production
-staging
-
-[servers:children]
-production
-staging
-local
-
-[production]
-netflikker.nl nickname=production vm=0 branch=master
-
-[staging]
-staging.netflikker.nl nickname=staging vm=0 branch=develop
-
-[local]
-192.168.33.10 nickname=local vm=1 branch=develop
+[webservers]
+37.139.5.155

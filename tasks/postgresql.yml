@@ -3,3 +3,53 @@
   with_items:
     - postgresql-9.1
     - postgresql-server-dev-9.1
+    - libpq-dev
+
+- name: Install required Python packages.
+  easy_install: name={{item}}
+  with_items:
+  - psycopg2
+
+- name: update postgres db configuration
+  template: src=templates/postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf
+  notify:
+    - restart postgresql
+
+- name: update postgres client configuration
+  copy: src=files/pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf
+  notify:
+    - restart postgresql
+
+- name: update kernel memory settings
+  copy: src=files/30-postgresql-shm.conf dest=/etc/sysctl.d/30-postgresql-shm.conf
+  notify:
+    - restart postgresql
+- name: update kernel memory settings
+  copy: src=files/30-postgresql-shm.conf dest=/etc/sysctl.d/30-postgresql-shm.conf
+  notify:
+    - reload sysctl
+
+- name: create superuser for {{user}}
+  postgresql_user: name={{user}} role_attr_flags=SUPERUSER
+  sudo_user: postgres
+  sudo: true
+
+- name: ensure database is created
+  postgresql_db: name={{postgresql_dbname}}
+  sudo_user: postgres
+  sudo: true
+
+- name: ensure user has access to database
+  postgresql_user: db={{postgresql_dbname}} name={{postgresql_username}} password={{postgresql_password}} priv=ALL
+  sudo_user: postgres
+  sudo: true
+
+- name: ensure tvguide has access to database
+  postgresql_user: db={{postgresql_dbname}} name=tvguide priv=ALL
+  sudo_user: postgres
+  sudo: true
+
+- name: ensure user does not have unnecessary privilege
+  postgresql_user: name={{postgresql_username}} role_attr_flags=NOSUPERUSER,NOCREATEDB
+  sudo_user: postgres
+  sudo: true

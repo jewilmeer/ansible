@@ -2,6 +2,7 @@
 - hosts: webservers
   vars_files:
     - vars.yml
+    - sensitive_user_data.yml
   gather_facts: false
   sudo: true
 
@@ -11,6 +12,9 @@
     - include: tasks/packages.yml
     - include: tasks/ruby.yml
     - include: tasks/postgresql.yml
+
+  handlers:
+    - include: handlers.yml
 
 #   - name: Create the project directory.
 #     file: state=directory path=${project_root}
