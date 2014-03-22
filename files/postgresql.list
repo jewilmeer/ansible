@@ -1,0 +1,6 @@
+# 12.04
+# deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main
+# 14.04
+# deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main
+# 14.10
+deb http://apt.postgresql.org/pub/repos/apt/ saucy-pgdg main
