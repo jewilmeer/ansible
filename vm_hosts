@@ -1,2 +1,2 @@
 [webservers]
-192.168.33.10 sudo_user=ubuntu
+127.0.0.1:2222 ansible_ssh_user=vagrant
