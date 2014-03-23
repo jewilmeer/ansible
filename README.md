@@ -2,6 +2,8 @@ To install ansible stuff:
 
 vagrant install:
 ansible-playbook -i vm_hosts provision.yml -u vagrant -k -c paramiko
+# might work as well...
+ansible-playbook -i vm_hosts provision.yml
 
 digital ocean installation:
 ansible-playbook -i hosts initial_bootstrap.yml
