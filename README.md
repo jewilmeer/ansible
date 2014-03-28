@@ -3,11 +3,13 @@ To install ansible stuff:
 vagrant install:
 ansible-playbook -i vm_hosts provision.yml -u vagrant -k -c paramiko
 # might work as well...
+ansible-playbook -i vm_hosts provision.yml -k -c paramiko
 ansible-playbook -i vm_hosts provision.yml
 
 digital ocean installation:
 ansible-playbook -i hosts initial_bootstrap.yml
-ansible-playbook -i hosts provision.yml -u jewilmeer
+/*Make sure the sudo password is entered*/
+ansible-playbook -i hosts provision.yml -K
 
 Generate password for user module
 pip install passlib
