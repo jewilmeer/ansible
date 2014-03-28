@@ -18,34 +18,37 @@
   with_items:
   - psycopg2
 
+- name: create conf.d directory
+  file: path=/etc/postgresql/9.3/main/conf.d state=directory
+    owner=postgres group=postgres
+
 - name: enable conf.d files for postgresql
   lineinfile: dest=/etc/postgresql/9.3/main/postgresql.conf
               insertafter="^#include_dir = 'conf.d'"
               line="include_dir = 'conf.d'"
               state=present
+  notify:
+    - restart postgresql
 
-# - name: update postgres db configuration
-#   template: src=templates/postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf
-#   notify:
-#     - restart postgresql
+- name: add custom posgresql server settings
+  copy: src=files/pg_listen_addresses.conf dest=/etc/postgresql/9.3/main/conf.d/listing_address.conf
+    owner=postgres group=postgres
+  notify:
+    - restart postgresql
 
-# - name: update postgres client configuration
-#   copy: src=files/pg_hba.conf dest=/etc/postgresql/9.3/main/pg_hba.conf
-#   notify:
-#     - restart postgresql
-
-# - name: update kernel memory settings
-#   copy: src=files/30-postgresql-shm.conf dest=/etc/sysctl.d/30-postgresql-shm.conf
-#   notify:
-#     - reload sysctl
-
-- name: create superuser for {{user}}
-  postgresql_user: name={{user}} role_attr_flags=SUPERUSER password={{ postgresql_superuser_password }}
-  sudo_user: postgres
-  sudo: true
+- name: update postgres client configuration
+  copy: src=files/pg_hba.conf dest=/etc/postgresql/9.3/main/pg_hba.conf
+    owner=postgres group=postgres
+  notify:
+    - restart postgresql
 
 - name: ensure database {{postgresql_dbname}} is created
   postgresql_db: name={{postgresql_dbname}}
+  sudo_user: postgres
+  sudo: true
+
+- name: create superuser for {{user}}
+  postgresql_user: name={{user}} password={{postgresql_password}} role_attr_flags=SUPERUSER
   sudo_user: postgres
   sudo: true
 
