@@ -7,10 +7,12 @@
   sudo: true
 
   tasks:
-    - include: tasks/system_defaults.yml
-    - include: tasks/users.yml
     - include: tasks/packages.yml
-    - include: tasks/ruby.yml
+    - include: tasks/system_defaults.yml
+    - include: tasks/newrelic.yml
+    - include: tasks/users.yml
+    # - include: tasks/ruby.yml
+    # - include: tasks/rails.yml
     - include: tasks/postgresql.yml
 
   handlers:

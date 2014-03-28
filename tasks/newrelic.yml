@@ -1,0 +1,16 @@
+- name: Add newrelic apt repo key
+  shell: wget --quiet -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add -
+
+- name: Install newrelic repository
+  copy: src=files/newrelic.list dest=/etc/apt/sources.list.d/newrelic.list owner=root mode=0600
+
+- name: install required postgresql packages
+  apt: pkg={{item}} state=installed update-cache=yes
+  with_items:
+    - newrelic-sysmond
+
+- name: set licence key for newrelic
+  shell: nrsysmond-config --set license_key={{newrelic_licence}}
+
+- name: start the newrelic sysmond service
+  service: name=newrelic-sysmond state=started
