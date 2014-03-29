@@ -31,7 +31,13 @@
     - restart postgresql
 
 - name: add custom posgresql server settings
-  copy: src=files/pg_listen_addresses.conf dest=/etc/postgresql/9.3/main/conf.d/listing_address.conf
+  template: src=templates/pg_listen_addresses.conf dest=/etc/postgresql/9.3/main/conf.d/listing_address.conf
+    owner=postgres group=postgres
+  notify:
+    - restart postgresql
+
+- name: add custom posgresql server settings
+  template: src=templates/pg_memory_settings.conf dest=/etc/postgresql/9.3/main/conf.d/memory_settings.conf
     owner=postgres group=postgres
   notify:
     - restart postgresql

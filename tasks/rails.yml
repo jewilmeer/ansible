@@ -1,0 +1,21 @@
+# http://www.modrails.com/documentation/Users%20guide%20Nginx.html#install_on_debian_ubuntu
+- name: Add passenger APT repo
+  shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+  sudo: true
+
+- name: Add HTTPS support for APT. Passenger APT repository is stored on an HTTPS server
+  shell: apt-get install apt-transport-https ca-certificates
+  sudo: true
+
+- name: Add passenger.list file
+  copy: src=files/passenger.list dest=/etc/apt/sources.list.d/passenger.list owner=root mode=0600
+  sudo: true
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install required ruby packages.
+  apt: pkg={{item}} state=installed update-cache=yes
+  with_items:
+  - nginx-extras
+  - passenger
