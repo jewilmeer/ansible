@@ -1,2 +1,4 @@
 [webservers]
-37.139.5.155
+
+[dbservers]
+db.netflikker.nl
