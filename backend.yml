@@ -1,0 +1,9 @@
+---
+- hosts: backend
+  vars_files:
+    - vars/main.yml
+    - vars/sensitive_user_data.yml
+  roles:
+    - common
+    - database
+  sudo: true
