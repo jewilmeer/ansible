@@ -1,0 +1,11 @@
+- name: Install required system packages.
+  apt: pkg={{item}} state=installed update-cache=yes
+  with_items: system_packages
+- name: 'Set timezone to Europe/Amsterdam'
+  shell: cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+- name: 'Set default locale LANG to UTF-8 '
+  lineinfile: dest=/etc/default/locale line='LANG="en_US.utf8"' regexp='^LANG=' state=present insertafter=BOF
+- name: 'Set default locale LC_ALL to UTF-8 '
+  lineinfile: dest=/etc/environment line='LC_ALL="en_US.utf8"' regexp='^LC_ALL=' state=present insertafter=BOF
+- name: ntp should be running
+  action: service name=ntp state=running

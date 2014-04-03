@@ -1,0 +1,16 @@
+---
+system_packages:
+  - build-essential
+  - software-properties-common
+  - ntpdate
+  - ntp
+  - libcurl4-openssl-dev
+  - zlib1g-dev
+  - fail2ban
+  - ntp
+  - vim
+  - git
+  - screen
+  - htop
+  - python-dev
+  - python-setuptools
