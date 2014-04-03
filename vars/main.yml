@@ -25,4 +25,3 @@ ruby_packages:
   - ruby-switch
 postgresql_shared_buffers: 225MB
 postgresql_listen_addresses: '*'
-newrelic_licence: 3d907b35a07ca0a48265027392b71acc2d432712
