@@ -1,7 +1,0 @@
-- name: restart postgresql
-  service: name=postgresql state=restarted
-- name: restart ssh
-  service: name=ssh state=restarted
-- name: reload sysctl
-  shell: sysctl --system
-  sudo: true
