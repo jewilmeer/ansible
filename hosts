@@ -1,4 +1,4 @@
-[webservers]
+[frontend]
 
-[dbservers]
+[backend]
 db.netflikker.nl
