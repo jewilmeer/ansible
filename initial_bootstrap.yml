@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Install the very basics for all remote servers
+  hosts: all
   vars_files:
     - vars.yml
     - sensitive_user_data.yml
