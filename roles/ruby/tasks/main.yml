@@ -1,0 +1,23 @@
+---
+- name: install python-pycurl
+  apt: pkg=python-pycurl state=latest
+
+- name: 'install brightbox ruby expirimental repositories'
+  apt_repository: repo=ppa:brightbox/ruby-ng-experimental state=present
+
+- name: 'Install required apt packages'
+  apt: pkg={{item}} state=installed update_cache=yes
+  with_items:
+    - ruby2.1
+    - ruby2.1-dev
+    - ruby-switch
+
+- name: make ruby 2.1 the default ruby
+  shell: ruby-switch --set ruby2.1
+
+- name: install default gems
+  gem: name={{item}} state=present
+  with_items:
+  - bundler
+  - rack
+  - rake
