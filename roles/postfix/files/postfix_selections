@@ -1,0 +1,2 @@
+postfix/mailname string db.netflikker.nl
+postfix/main_mailer_type string 'Netflikker'

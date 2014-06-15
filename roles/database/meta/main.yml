@@ -1,0 +1,6 @@
+---
+dependencies:
+  - { role: common }
+  - { role: unattended-updates }
+  - { role: logwatch }
+  - { role: fail2ban, fail2ban.ignoreip: 'jewilmeer.myds.me' }

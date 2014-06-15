@@ -1,0 +1,6 @@
+---
+- name: Install unattended-upgrades package
+  apt: pkg=unattended-upgrades state=installed update-cache=yes
+
+- name: Adjust APT update intervals
+  action: copy src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic

@@ -11,6 +11,10 @@ ansible-playbook -i hosts initial_bootstrap.yml
 /*Make sure the sudo password is entered*/
 ansible-playbook -i hosts provision.yml -K
 
+--- 14-06-2014
+ansible-playbook -i hosts site.yml
+
+
 Generate password for user module
 pip install passlib
 Once the library is ready, SHA512 password values can then be generated as follows:

@@ -1,0 +1,6 @@
+- name: Copy debconf selections so that Postfix can configure itself non-interactively
+  copy: src=postfix_selections  dest=/tmp/postfix_selections
+
+- name: Set up Postfix to relay mail
+  action: command debconf-set-selections /tmp/postfix_selections
+
