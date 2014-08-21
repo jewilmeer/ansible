@@ -1,6 +1,7 @@
 This is a collection of scripts used to install servers I run for personal projects. Feel free to use them and make suggests / pull-requests. Since all this is for personal projects, it's only recommended to use as inspiration.
 
 To install ansible stuff:
+note: I've recently added `ansible-vault` files. Run vaulted scripts with `--vault-password-file ~/.vault_pass.txt` and place your pass in the given file. Example files will be provided
 
 ### vagrant install:
 
@@ -15,8 +16,7 @@ ansible-playbook -i vm_hosts provision.yml
 ### digital ocean installation:
 
 ```bash
-ansible-playbook -i hosts initial_bootstrap.yml
-
+ansible-playbook -i hosts initial_bootstrap.yml --vault-password-file ~/.vault_pass
 ansible-playbook -i hosts provision.yml -K
 
 ansible-playbook -i hosts site.yml
