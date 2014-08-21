@@ -1,6 +1,8 @@
+This is a collection of scripts used to install servers I run for personal projects. Feel free to use them and make suggests / pull-requests. Since all this is for personal projects, it's only recommended to use as inspiration.
+
 To install ansible stuff:
 
-vagrant install:
+### vagrant install:
 
 ```bash
 ansible-playbook -i vm_hosts provision.yml -u vagrant -k -c paramiko
