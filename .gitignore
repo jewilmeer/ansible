@@ -1,1 +1,2 @@
 vars/sensitive_user_data.yml
+vagrant/.vagrant*
