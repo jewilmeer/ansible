@@ -1,5 +1,5 @@
 [webserver]
 netflikker.nl
 
-[backend]
+[database]
 db.netflikker.nl
