@@ -6,20 +6,14 @@ note: I've recently added `ansible-vault` files. Run vaulted scripts with `--vau
 ### vagrant install:
 
 ```bash
-ansible-playbook -i vm_hosts provision.yml -u vagrant -k -c paramiko
-
-# might work as well...
-ansible-playbook -i vm_hosts provision.yml -k -c paramiko
-ansible-playbook -i vm_hosts provision.yml
+ansible-playbook -i vm_hosts provision.yml --vault-password-file ~/.vault_pass
 ```
 
 ### digital ocean installation:
 
 ```bash
 ansible-playbook -i hosts initial_bootstrap.yml --vault-password-file ~/.vault_pass
-ansible-playbook -i hosts provision.yml -K
-
-ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts provision.yml --vault-password-file ~/.vault_pass
 ```
 
 ### Generate password for user module

@@ -7,7 +7,12 @@
   user: root
   tasks:
     - name: create {{user}} as user
-      user: name={{user}} password={{user_password}} createhome=yes shell=/bin/bash state=present groups=sudo generate_ssh_key=true
+      user: name={{user}} password={{user_password}}
+        createhome=yes
+        shell=/bin/bash
+        state=present
+        groups=sudo
+        generate_ssh_key=true
     - name: make {{user}} a sandwich
       template: src=roles/users/templates/sudoers.d dest=/etc/sudoers.d/{{user}} mode=0640 owner=root
     - name: set authorized_keys for {{user}}
