@@ -1,4 +1,4 @@
-[database]
+[dbservers]
 127.0.0.1:2222 ansible_sudo_user=vagrant ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
-[webserver]
+[webservers]
 127.0.0.1:2222 ansible_sudo_user=vagrant ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key

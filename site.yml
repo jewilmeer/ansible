@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: true
+  vars_files:
+    - vars/main.yml
+    - vars/sensitive_user_data.yml
+  roles:
+    - common
+    - newrelic
+
+- include: webservers.yml
+- include: dbservers.yml
