@@ -7,13 +7,21 @@
 
 - name: 'Install required apt packages'
   apt: pkg={{item}} state=installed update_cache=yes
+  sudo: true
   with_items:
     - ruby2.1
     - ruby2.1-dev
+    - ruby-switch
+
+- name: make ruby 2.1 the default ruby
+  shell: ruby-switch --set ruby2.1
+  sudo: true
 
 - name: install default gems
-  gem: name={{item}} state=present
+  gem: name={{item}} state=present user_install=false
+  sudo: true
   with_items:
   - bundler
+  - foreman
   - rack
   - rake

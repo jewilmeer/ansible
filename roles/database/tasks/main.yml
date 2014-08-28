@@ -1,0 +1,6 @@
+- name: 'Install required apt packages'
+  apt: pkg=$item state=installed update_cache=yes
+  sudo: true
+  with_items:
+    - postgresql
+    - libpq-dev

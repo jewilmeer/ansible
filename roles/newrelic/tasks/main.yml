@@ -2,7 +2,7 @@
   shell: wget --quiet -O - https://download.newrelic.com/548C16BF.gpg | sudo apt-key add -
 
 - name: Install newrelic repository
-  copy: src=newrelic.list dest=/etc/apt/sources.list.d/newrelic.list owner=root mode=0600
+  copy: src=newrelic.list dest=/etc/apt/sources.list.d/newrelic.list owner=root mode=0644
 
 - name: install required postgresql packages
   apt: pkg={{item}} state=installed update-cache=yes

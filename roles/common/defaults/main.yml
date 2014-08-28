@@ -1,4 +1,6 @@
 ---
+timezone: Europe/Amsterdam
+default_locale: en_US.utf8
 system_packages:
   - build-essential
   - fail2ban
@@ -14,3 +16,4 @@ system_packages:
   - software-properties-common
   - vim
   - zlib1g-dev
+ntp_enabled: true

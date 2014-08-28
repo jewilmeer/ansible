@@ -1,0 +1,9 @@
+---
+user: vagrant
+group: jewilmeer
+home: /home/{{user}}
+application: netflikker
+application_source_repo: https://github.com/jewilmeer/tv-guide.git
+application_path: "/var/www/{{application}}"
+application_source_path: "{{application_path}}/source"
+application_source_ref: feature-foreman

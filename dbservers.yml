@@ -1,3 +1,10 @@
 - hosts: dbservers
+  sudo: yes
+  vars_files:
+    - vars/main.yml
+    - vars/sensitive_user_data.yml
   roles:
+    - common
+    - newrelic
     - database
+    - { role: sidekiq, user: "{{user}}", sudo: false }

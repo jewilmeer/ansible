@@ -4,7 +4,9 @@
   vars_files:
     - vars/main.yml
     - vars/sensitive_user_data.yml
-  user: root
+  user: root # for 'normal' runs
+  # user: vagrant # for vm runs
+  # sudo: true # for vm runs
   tasks:
     - name: create {{user}} as user
       user: name={{user}} password={{user_password}}
